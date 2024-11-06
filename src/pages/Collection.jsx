@@ -10,6 +10,7 @@ function collection() {
   const [filterProducts, setFilterProducts] = useState([]);
   const [category, setCategory] = useState([]);
   const [subCategory, setSubCategory] = useState([]);
+
   const toggleCategory = (e) => {
     if (category.includes(e.target.value)) {
       setCategory((prev) => prev.filter((item) => item !== e.target.value));
@@ -22,16 +23,32 @@ function collection() {
     if (subCategory.includes(e.target.value)) {
       setSubCategory((prev) => prev.filter((item) => item !== e.target.value));
     } else {
+      // SPREAD OPERATOR
       setSubCategory((prev) => [...prev, e.target.value]);
     }
+  };
+
+  const applyFilter = () => {
+    let copyProducts = products.slice();
+    if (category.length > 0) {
+      debugger;
+      copyProducts = copyProducts.filter((item) =>
+        category.includes(item.category)
+      );
+    } else if (subCategory.length > 0) {
+      copyProducts = copyProducts.filter((item) =>
+        subCategory.includes(item.subCategory)
+      );
+    }
+    setFilterProducts(copyProducts);
   };
   useEffect(() => {
     setFilterProducts(products);
   }, []);
-
   useEffect(() => {
-    console.log(subCategory);
-  }, [subCategory]);
+    applyFilter();
+  }, [category, subCategory]);
+
   return (
     <div className="flex flex-col sm:flex-row gap-1 sm:gap-10 pt-10 border-t ">
       {/*Filter Products */}
