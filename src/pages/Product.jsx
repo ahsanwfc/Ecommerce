@@ -58,16 +58,16 @@ function Product() {
             <p className="pl-2">(122)</p>
           </div>
           <div className="flex item-center gap-2 mt-3 mb-3">
-            {productData.compare_price ? (
+            {productData.comparePrice ? (
               <>
                 <p className="text-2xl font-semibold text-red-600">
+                  <del className="text-gray-700">
+                    {currency}
+                    {productData.price}
+                  </del>
                   {currency}
-                  {productData.compare_price}
+                  {productData.comparePrice}
                 </p>
-                <del className="text-2xl font-medium text-gray-700">
-                  {currency}
-                  {productData.price}
-                </del>
               </>
             ) : (
               <p className="text-2xl font-medium text-gray-700">
