@@ -28,7 +28,8 @@ function Orders() {
                   <p>Size:{item.sizes[0]}</p>
                 </div>
                 <div className="mt-1">
-                  Date <span className="text-gray-500">Thu Nov 14,2024</span>
+                  New Date{" "}
+                  <span className="text-gray-500">Thu Nov 14,2024</span>
                 </div>
                 <div className="mt-1">
                   Payment: <span className="text-gray-500">COD</span>
